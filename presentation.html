@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Awesome Presentation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+      body { font-family: 'JetBrains Mono', 'system-ui', 'sans-serif'; }
+      h1, h2, h3 {
+        font-weight: normal;
+      }
+      .remark-slide-scaler {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .remark-container {
+        background-color: #2b2b2b;
+      }
+      .remark-slide-content {
+        background-color: #3c3f41;
+        color: #d9d9d9;
+      }
+      .fixed-header {
+        top: 12px;
+        position: absolute;
+        left: 20px;
+      }
+      .fixed-header.dimmed {
+        opacity: .5;
+      }
+      .remark-slide-number {
+          font-size: 1rem;
+      }
+      .no-slide-number .remark-slide-number {
+        display: none;
+      }
+      .remark-slide-content {
+        font-size: 1.6rem;
+      }
+      .remark-slide-content a {
+          color: #d9d9d9;
+          text-decoration: none;
+      }
+
+      .slide-image {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        width: 100%;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+    </style>
+  </head>
+  <body onload="var slideshow = remark.create();">
+    <textarea id="source">
+class: center, middle
+# Intro to Prometheus
+(application monitoring tool)
+---
+class: center, middle
+#*The best way to learn something<br/> is to teach it*
+---
+# Goal
+---
+count: false
+# Goal
+1. Give an overview of what Prometheus is
+---
+count: false
+# Goal
+1. Give an overview of what Prometheus is
+1. That's it
+---
+count: false
+# Goal
+1. Give an overview of what Prometheus is
+1. That's it
+1. OK, maybe do a "demo": how to use it in the context of PHP/Symfony
+---
+  <div class="slide-image" style="background-image: url('assets/img/0_stick_figure.png');"></div>
+---
+count: false
+  <div class="slide-image" style="background-image: url('assets/img/10_developer.png');"></div>
+---
+count: false
+  <div class="slide-image" style="background-image: url('assets/img/20_developer_small.png');"></div>
+---
+count: false
+   <div class="slide-image" style="background-image: url('assets/img/30_app.png');"></div>
+---
+count: false
+   <div class="slide-image" style="background-image: url('assets/img/40_app_infra.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/50_app_infra_not_important.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/60_users.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/70_users_communicate.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/73_time_passes.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/76_time_passes.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/80_developer_thinks.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/90_developer_asks_infra.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/100_developer_asks_users.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/110_stage.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/120_prometheus_enters_the_stage.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/130_prometheus_communicates_to_app.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/130_prometheus_communicates_to_app_via_http.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/140_developer_communicates_to_prometheus.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/140_developer_communicates_to_prometheus_via_ui_and_api.png');"></div>
+---
+class: middle
+
+Prometheus scraps (gathers) metrics exposed via HTTP endpoint of your app. Scraping is done in regular intervals of time.
+
+---
+class: middle
+
+App is expected to have some long-lived state that represents metrics gathered since start of the app.
+
+---
+class: middle
+
+# Prometheus
+
+- Soundcloud
+- 2012
+- free software
+- TSDB
+- Go
+- Twitter Bootstrap
+
+---
+class: center, middle, no-slide-number
+count: false
+
+<a href="https://prometheus.io/docs/introduction/overview/#architecture">
+    <img src="assets/architecture.png" alt="" style="width: 100%;" />
+</a>
+<p>source: <a href="https://prometheus.io/docs/introduction/overview/">https://prometheus.io/docs/introduction/overview/</a></p>
+---
+
+class: center, middle
+# Prometheus <-> App communication
+---
+    <div class="slide-image" style="background-image: url('assets/img/400_prom_and_app.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/410_prom_and_app_metrics.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/420_prom_and_app_metrics_interval.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/430_prom_and_app_db.png');"></div>
+---
+count: false
+    <div class="slide-image" style="background-image: url('assets/img/440_prom_and_app_db_tsdb.png');"></div>
+---
+
+# /metrics
+
+Metrics endpoint returns data in prometheus specific text format:
+
+```
+<metric-a-name>{<label name>=<label value>, ...} <value>
+<metric-b-name>{<label name>=<label value>, ...} <value>
+<metric-c-name>_<postfix> <value>
+<metric-c-name>_<postfix> <value>
+```
+
+---
+
+# /metrics
+
+Metrics are just numeric values - numbers.
+
+---
+count: false
+
+# /metrics
+
+Metrics are just numeric values - numbers.
+
+Those numbers:
+
+---
+count: false
+
+# /metrics
+
+Metrics are just numeric values - numbers.
+
+Those numbers:
+- can be categorized by set of `label=value` pairs
+
+---
+count: false
+
+# /metrics
+
+Metrics are just numeric values - numbers.
+
+Those numbers:
+- can be categorized by set of `label=value` pairs
+- can be accumulated into buckets (groups)
+
+---
+count: false
+
+# /metrics
+
+Metrics are just numeric values - numbers.
+
+Those numbers:
+- can be categorized by set of `label=value` pairs
+- can be accumulated into buckets
+- are expected to change over time
+
+---
+count: false
+
+# /metrics
+
+Metrics are just numeric values - numbers.
+
+Those numbers:
+- can be categorized by set of `label=value` pairs
+- can be accumulated into buckets
+- are expected to change over time
+- can be analysed using PQL (PromQL)
+
+---
+
+# /metrics
+
+We have following types of metrics:
+- Counter
+        ex: how many times given event occurred?
+- Gauge
+        ex: how long is the background queue currently?
+- Histogram
+        ex: what is distribution of request durations?
+- Summary
+        ex: no idea how it differs from histogram
+
+---
+
+# /metrics
+
+We have following types of metrics:
+- Counter
+        $counter = ... // setup for counter
+        $counter->incBy(1);
+        // or...
+        $counter->incBy(1, ['example-label-value', ...]);
+---
+
+# /metrics
+
+We have following types of metrics:
+- Gauge
+        $gauge = ... // setup for gauge
+        $gauge->set(10)
+---
+
+# /metrics
+
+We have following types of metrics:
+- Histogram
+        $histogram = ... // setup for histogram
+        $histogram->observe(10);
+         // or...
+        $histogram->observe(1, ['example-label-value', ...]);
+
+
+---
+
+# introducing new metric into app
+
+---
+
+# introducing new metric into app
+
+1. Think about: name, type, and labels for the metric
+
+---
+
+# introducing new metric into app
+
+1. Think about: name, type, and labels for the metric
+1. Modify the app to add new metric
+
+---
+
+# introducing new metric into app
+
+1. Think about: name, type, and labels for the metric
+1. Modify the app to add new metric:
+  - declare the metric in the app using Prometheus library for your language
+
+---
+
+# introducing new metric into app
+
+1. Think about: name, type, and labels for the metric
+1. Modify the app to add new metric:
+  - declare the metric in the app using Prometheus library for your language
+  - make sure metric is captured at appropriate places in the app
+
+---
+
+# introducing new metric into app
+
+1. Think about: name, type, and labels for the metric
+1. Modify the app to add new metric:
+  - declare the metric in the app using Prometheus library for your language
+  - make sure metric is captured at appropriate places in the app
+1. Deploy the app
+
+---
+
+# introducing new metric into app
+
+1. Think about: name, type, and labels for the metric
+1. Modify the app to add new metric:
+  - declare the metric in the app using Prometheus library for your language
+  - make sure metric is captured at appropriate places in the app
+1. Deploy the app
+1. Query and visualise data in our tool of choice
+
+---
+
+# querying metrics data
+
+<p>
+    <ul>
+        <li style="word-break: break-all;">
+            <a href="https://prometheus.io/docs/tutorials/understanding_metric_types/" style="">
+                https://prometheus.io/docs/tutorials/understanding_metric_types/
+            </a>
+        </li>
+        <li style="word-break: break-all;">
+            <a href="https://prometheus.io/docs/prometheus/latest/querying/examples/" style="">
+                https://prometheus.io/docs/prometheus/latest/querying/examples/
+            </a>
+        </li>
+    </ul>
+</p>
+
+
+---
+
+class: center, middle
+# demo time (?)
+
+---
+
+    </textarea>
+    <script src="remark-latest.min.js"></script>
+  </body>
+</html>
